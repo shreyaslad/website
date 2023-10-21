@@ -2,6 +2,34 @@
 import "@/styles/globals.css";
 
 import { Picture } from "astro:assets";
+
+import { ProjectCard } from "@/components/project-card";
+import { Button } from "@/components/ui/button";
+
+import { Linkedin, Github, FileText } from "lucide-react";
+
+const projects = [
+  {
+    title: "Trader",
+    description: "High-frequency trading algorithm",
+    tags: ["AWS", "Docker", "Golang"],
+  },
+  {
+    title: "Finance",
+    description: "Statement ingestion + processing",
+    tags: ["AWS", "Docker", "Golang"],
+  },
+  {
+    title: "Spectator",
+    description: "ChatOps for CI/CD",
+    tags: ["AWS", "Next.JS", "Golang"],
+  },
+  {
+    title: "Delta",
+    description: "Vehicle Anti-Collision System",
+    tags: ["Python", "Hardware", "Hardware"],
+  },
+];
 ---
 
 <script is:inline>
@@ -31,36 +59,93 @@ if (typeof localStorage !== "undefined") {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://github.com/shreyaslad.png"
+    />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Shreyas Lad</title>
+    <title>Home | Shreyas Lad</title>
   </head>
   <body>
-    <div class="m-8">
-      <div class="flex flex-col h-screen justify-center">
-        <div class="flex flex-row justify-between items-center">
-          <div>
-            <h2
-              class="scroll-m-20 pb-2 text-8xl font-bold tracking-tight first:mt-0"
-            >
-              Shreyas Lad
-            </h2>
+    <div class="m-12 flex flex-col gap-8">
+      <!-- Navbar -->
+      <section class="flex flex-row justify-between items-center">
+        <p class="text-3xl font-semibold tracking-tight">Shreyas Lad</p>
 
-            <p class="text-2xl text-muted-foreground tracking-wide">
-              Hello there
-            </p>
-          </div>
+        <!-- Social Buttons -->
+        <div class="flex flex-row gap-2">
+          <Button variant={"outline"} size={"icon"}>
+            <Linkedin className="stroke-0 fill-current" />
+          </Button>
 
-          <Picture
-            src="https://github.com/shreyaslad.png"
-            alt="Profile picture"
-            width={200}
-            height={200}
-            class="overflow-hidden rounded-full"
-          />
+          <Button variant={"outline"} size={"icon"}>
+            <Github />
+          </Button>
+
+          <Button className="shadow-none ml-2">Download Resume</Button>
         </div>
-      </div>
+      </section>
+
+      <hr />
+
+      <!-- Hero -->
+      <section class="flex flex-row justify-between items-center mb-8">
+        <div class="flex flex-col gap-y-3">
+          <h2
+            class="scroll-m-20 text-8xl pb-2 font-semibold tracking-tight first:mt-0"
+          >
+            Hey There! 👋
+          </h2>
+          <h3
+            class="scroll-m-20 text-2xl font-light tracking-wide text-muted-foreground"
+          >
+            I specialize in <span class="font-semibold">AWS</span> and fullstack
+            engineering. <span class="font-semibold">Golang</span>,
+
+            <span class="font-semibold">Python</span>, <span
+              class="font-semibold">Typescript</span
+            >, <span class="font-semibold">C</span>.
+          </h3>
+
+          <div class="flex flex-row mt-2 gap-4">
+            <Button>
+              <Linkedin className="mr-2 h-4 w-4 fill-inherit stroke-1" /> Let's
+              Connect!
+            </Button>
+            <Button size={"lg"} variant={"secondary"}>Resume</Button>
+          </div>
+        </div>
+
+        <Picture
+          alt="Profile Picture"
+          width={200}
+          height={200}
+          src={"https://github.com/shreyaslad.png"}
+          class={"overflow-hidden rounded-full"}
+        />
+      </section>
+
+      <section>
+        <h2
+          class="scroll-m-20 pb-2 text-4xl font-semibold tracking-tight first:mt-0 text-muted-foreground"
+        >
+          Projects
+        </h2>
+
+        <div class="grid grid-cols-4 gap-4 mt-4">
+          {
+            projects.map((val, _) => (
+              <ProjectCard
+                title={val.title}
+                description={val.description}
+                tags={val.tags}
+              />
+            ))
+          }
+        </div>
+      </section>
     </div>
   </body>
 </html>
