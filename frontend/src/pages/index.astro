@@ -6,28 +6,32 @@ import { Picture } from "astro:assets";
 import { ProjectCard } from "@/components/project-card";
 import { Button } from "@/components/ui/button";
 
-import { Linkedin, Github, FileText } from "lucide-react";
+import { Linkedin, Github } from "lucide-react";
 
 const projects = [
   {
     title: "Trader",
     description: "High-frequency trading algorithm",
     tags: ["AWS", "Docker", "Golang"],
+    link: "https://github.com/shreyaslad/trader",
   },
   {
     title: "Finance",
     description: "Statement ingestion + processing",
     tags: ["AWS", "Next.JS", "Python"],
+    link: "https://github.com/shreyaslad/finance",
   },
   {
     title: "Spectator",
     description: "ChatOps for CI/CD",
     tags: ["AWS", "Next.JS", "Golang"],
+    link: "https://github.com/shreyaslad/spectator",
   },
   {
     title: "Delta",
     description: "Vehicle Anti-Collision System",
     tags: ["Python", "Hardware", "MQTT"],
+    link: "https://github.com/shreyaslad/delta",
   },
 ];
 ---
@@ -76,15 +80,21 @@ if (typeof localStorage !== "undefined") {
 
         <!-- Social Buttons -->
         <div class="flex flex-row gap-2">
-          <Button variant={"outline"} size={"icon"}>
-            <Linkedin className="stroke-0 fill-current" />
-          </Button>
+          <a href="https://linkedin.com/in/shreyaslad" target="_blank">
+            <Button variant={"outline"} size={"icon"}>
+              <Linkedin className="stroke-0 fill-current" />
+            </Button>
+          </a>
 
-          <Button variant={"outline"} size={"icon"}>
-            <Github />
-          </Button>
+          <a href="https://github.com/shreyaslad" target="_blank">
+            <Button variant={"outline"} size={"icon"}>
+              <Github />
+            </Button>
+          </a>
 
-          <Button className="shadow-none ml-2">Download Resume</Button>
+          <a href="/Shreyas_Lad_Resume.pdf" target="_blank">
+            <Button className="shadow-none ml-2">Download Resume</Button>
+          </a>
         </div>
       </section>
 
@@ -110,11 +120,18 @@ if (typeof localStorage !== "undefined") {
           </h3>
 
           <div class="flex flex-row mt-2 gap-4">
-            <Button>
-              <Linkedin className="mr-2 h-4 w-4 fill-inherit stroke-1" /> Let's
-              Connect!
-            </Button>
-            <Button size={"lg"} variant={"secondary"}>Download Resume</Button>
+            <a href="https://linkedin.com/in/shreyaslad" target="_blank">
+              <Button>
+                <Linkedin className="mr-2 h-4 w-4 fill-inherit stroke-1" />
+                 Let's Connect!
+              </Button>
+            </a>
+
+            <a href="/Shreyas_Lad_Resume.pdf" target="_blank"
+              ><Button size={"lg"} variant={"secondary"}>
+                Download Resume
+              </Button>
+            </a>
           </div>
         </div>
 
@@ -141,6 +158,7 @@ if (typeof localStorage !== "undefined") {
                 title={val.title}
                 description={val.description}
                 tags={val.tags}
+                link={val.link}
               />
             ))
           }
