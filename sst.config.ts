@@ -1,14 +1,14 @@
 import { SSTConfig } from "sst";
-import { API } from "./stacks/MyStack";
+import { WebsiteStack } from "./stacks/WebsiteStack";
 
 export default {
   config(_input) {
     return {
       name: "website",
-      region: "us-east-1",
+      region: "us-west-2",
     };
   },
   stacks(app) {
-    app.stack(API);
-  }
+    app.stack(WebsiteStack);
+  },
 } satisfies SSTConfig;

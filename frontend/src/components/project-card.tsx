@@ -16,9 +16,11 @@ type CardProps = {
   tags: string[];
 };
 
-export function ProjectCard({ title, description, tags }: CardProps) {
+export function ProjectCard(props: CardProps) {
+  const { title, description, tags } = props;
+
   return (
-    <Card className="hover:bg-muted">
+    <Card className="hover:bg-muted" key={title}>
       <CardHeader>
         <div className="flex flex-row justify-between items-center">
           <CardTitle>{title}</CardTitle>
@@ -28,8 +30,10 @@ export function ProjectCard({ title, description, tags }: CardProps) {
       </CardHeader>
 
       <CardFooter className="gap-2">
-        {tags.map((val, _) => (
-          <Badge variant={"secondary"}>{val}</Badge>
+        {tags.map((val, i) => (
+          <Badge variant={"secondary"} key={i}>
+            {val}
+          </Badge>
         ))}
       </CardFooter>
     </Card>
